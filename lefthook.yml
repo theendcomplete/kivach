@@ -1,0 +1,11 @@
+pre-commit:
+  parallel: true
+  commands:
+    brakeman:
+      run: brakeman --no-pager
+    bundle-audit:
+      run: bundle-audit check --update
+    rubocop:
+      # files: git diff --name-only HEAD
+      # glob: "*.{rb}"
+      run: rubocop -P

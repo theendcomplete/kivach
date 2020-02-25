@@ -1,0 +1,16 @@
+test:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
+yandex:
+  service: S3
+  access_key_id: <%= Rails.application.credentials.dig(:yandex, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:yandex, :secret_access_key) %>
+  region: ru-central1
+  bucket: <%= Rails.application.credentials.dig(:yandex, :bucket) %>
+  endpoint: <%= Rails.application.credentials.dig(:yandex, :endpoint) %>
+  force_path_style: <%= Rails.application.credentials.dig(:yandex, :force_path_style) %>

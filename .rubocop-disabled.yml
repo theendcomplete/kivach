@@ -1,0 +1,65 @@
+# Check that the keys, separators, and values of a multi-line hash literal are aligned according to configuration
+Layout/AlignHash:
+  Enabled: false
+
+# Check if the parameters on a multi-line method call or definition are aligned.
+Layout/AlignParameters:
+  Enabled: false
+
+# This cops checks the indentation of the first key in a hash literal where the opening brace and the first key are on separate lines.
+Layout/IndentFirstHashElement:
+  Enabled: false
+
+# This cop checks the indentation of the right hand side operand in binary operations that span more than one line.
+Layout/MultilineOperationIndentation:
+  Enabled: false
+
+# Align ends correctly.
+Layout/EndAlignment:
+  Enabled: false
+
+# Disable all Metrics related cops
+Metrics:
+  Enabled: false
+
+# This cop looks for has_many or has_one associations that don't specify a :dependent option.
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+# This cop looks for has_(one|many) and belongs_to associations where ActiveRecord can't automatically determine the inverse association.
+Rails/InverseOf:
+  Enabled: false
+
+# This cop checks for add_column call with NOT NULL constraint in migration file.
+Rails/NotNullColumn:
+  Enabled: false
+
+# This cop checks for the use of output calls like puts and print
+Rails/Output:
+  Enabled: false
+
+# This cop checks for the use of output safety calls like html_safe, raw, and safe_concat
+Rails/OutputSafety:
+  Enabled: false
+
+# This cop checks for the use of methods which skip validations.
+Rails/SkipsModelValidations:
+  Enabled: false
+
+# Check that left braces for adjacent single line lets are aligned.
+RSpec/AlignLeftLetBrace:
+  Enabled: false
+
+# Check that right braces for adjacent single line lets are aligned.
+RSpec/AlignRightLetBrace:
+  Enabled: false
+
+# Check for long examples.
+RSpec/ExampleLength:
+  Enabled: false
+
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false

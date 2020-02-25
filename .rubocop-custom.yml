@@ -1,0 +1,100 @@
+# This cop checks for ambiguous block association with method when param passed without parentheses.
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - 'spec/**/*.rb'
+
+# This cop looks for error classes inheriting from `Exception` and its standard library subclasses, excluding subclasses of `StandardError`.
+Lint/InheritException:
+  EnforcedStyle: standard_error
+
+# This cop checks for consistent uses of request.referer or request.referrer, depending on the cop's configuration.
+Rails/RequestReferer:
+  EnforcedStyle: referer
+
+# This cop converts usages of try! to &.
+Rails/SafeNavigation:
+  ConvertTry: true
+
+# This cop checks that environments called with Rails.env predicates exist.
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - staging
+
+# Check that before/after(:all) isn't being used.
+RSpec/BeforeAfterAll:
+  Exclude:
+    - spec/spec_helper.rb
+    - spec/rails_helper.rb
+    - spec/support/**/*.rb
+
+# `context` block descriptions should start with 'when', or 'with'
+RSpec/ContextWording:
+  Prefixes:
+    - by
+    - for
+    - that
+    - when
+    - with
+    - without
+
+# Check for consistent style of change matcher.
+RSpec/ExpectChange:
+  EnforcedStyle: block
+
+# Check for explicitly referenced test subjects.
+RSpec/NamedSubject:
+  Exclude:
+    - spec/features/shared_examples/**/*.rb
+    - spec/support/shared_examples/**/*.rb
+
+# Check for nested example groups.
+RSpec/NestedGroups:
+  Max: 4
+
+# Check for consistent method usage for negating expectations.
+RSpec/NotToNot:
+  EnforcedStyle: to_not
+
+# Check for consistent style of stub's return setting.
+RSpec/ReturnFromStub:
+  EnforcedStyle: block
+
+# Document classes and non-namespace modules.
+Style/Documentation:
+  Enabled: false
+
+# Check for the formatting of empty method definitions.
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+# Use a consistent style for format string tokens.
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+# Add the frozen_string_literal comment to the top of files to help transition from Ruby 2.3.0 to Ruby 3.0.
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Check for conditionals that can be replaced with guard clauses.
+Style/GuardClause:
+  Enabled: false
+
+# Use smallcase prefixes for numeric literals.
+Style/NumericLiteralPrefix:
+  Enabled: false
+
+# Add underscores to large numeric literals to improve their readability.
+Style/NumericLiterals:
+  MinDigits: 4
+
+# Use `%`-literal delimiters consistently.
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default:  '()'
+    '%i': '[]'
+    '%w': '[]'
+    '%W': '[]'
+    '%r': '{}'

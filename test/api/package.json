@@ -1,0 +1,18 @@
+{
+  "name": "kivach_recipes-api-test",
+  "version": "0.0.1",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "chai-json-schema": "^1.5.1"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "should": "^13.2.3",
+    "supertest": "^3.4.2",
+    "unexpected": "^11.6.0"
+  },
+  "scripts": {
+    "test": "mocha ./test/**/*.js",
+    "test:alpha": "API_URL='https://api.kivach-recipes.alpha.trinitydigital.ru' npm run test"
+  }
+}

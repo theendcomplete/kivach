@@ -1,0 +1,91 @@
+# https://hub.docker.com/r/library/ruby/tags/
+image: ruby:latest
+
+services:
+  - redis:latest
+  - postgres:latest
+
+variables:
+  POSTGRES_DB: kivach_recipes
+  POSTGRES_USER: kivach_recipes
+  POSTGRES_PASSWORD: kivach_recipes
+  RAILS_ENV: "test"
+  NODE_ENV: "test"
+  GIT_DEPTH: "20"
+  GIT_SUBMODULE_STRATEGY: "none"
+  GET_SOURCES_ATTEMPTS: "3"
+  BUILD_ASSETS_IMAGE: "false"
+
+cache:
+  paths:
+    - vendor/
+
+before_script:
+  - apt-get update -y && apt-get install openssh-client rsync libpq-dev nodejs cmake -y
+  - gem install bundler && bundle -v
+  - mkdir -p ~/.ssh && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  - ruby -v
+  - ssh -V
+  - echo "$RAILS_ENV" > .rails-env
+  - echo "$RAILS_SECRET_KEY" > config/secrets.$RAILS_ENV.key
+  - cp config/database.gitlab.yml config/database.yml
+  - bundle install --path vendor --jobs $(nproc) "${FLAGS[@]}"
+  - bundle exec rake db:create db:migrate db:seed
+
+stages:
+  - test
+
+rspec:
+  stage: test
+  except:
+    - develop
+  tags:
+    - develop
+    - docker
+  script:
+    - bundle exec rspec
+
+rubocop:
+  stage: test
+  except:
+    - develop
+  tags:
+    - develop
+    - docker
+  script:
+    - bundle exec rubocop -P
+
+bundle-audit:
+  stage: test
+  except:
+    - develop
+  tags:
+    - develop
+    - docker
+  script:
+    - bundle exec bundle-audit check --update
+
+brakeman:
+  stage: test
+  except:
+    - develop
+  tags:
+    - develop
+    - docker
+  script:
+    - bundle exec brakeman
+
+# deploy:
+#   stage: deploy
+#   environment:
+#     name: $CI_COMMIT_REF_NAME
+#     url: https://api.academy.$CI_COMMIT_REF_NAME.trinitydigital.ru
+#   tags:
+#     - develop
+#   only:
+#     - alpha
+#     - beta
+#     - release
+#   script:
+#     - keyvar="SSH_${CI_COMMIT_REF_NAME^^}_PRIVATE_KEY" && echo "${!keyvar}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+#     - bundle exec cap $CI_COMMIT_REF_NAME deploy

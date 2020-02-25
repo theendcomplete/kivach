@@ -1,0 +1,9 @@
+test:
+  host: postgres
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  database: kivach_recipes_test
+  username: kivach_recipes
+  password: kivach_recipes

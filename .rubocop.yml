@@ -1,0 +1,22 @@
+require:
+  - rubocop-rspec
+  - rubocop-performance
+  - rubocop-rails
+
+inherit_from:
+  - .rubocop-custom.yml
+  - .rubocop-disabled.yml
+  - .rubocop-security.yml
+
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
+    - 'lib/generators/**/*'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'chef/**/*'
+
+Rails:
+  Enabled: true

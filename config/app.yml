@@ -1,0 +1,23 @@
+development:
+  email_adapter: console
+  admin_web_url: http://localhost:4211
+  slack_webhook_url: 
+  discord_webhook_url: 
+
+alpha:
+  admin_web_url: https://admin.kivach-recipes.alpha.trinitydigital.ru
+  email_adapter: slack
+  slack_webhook_url: 
+  discord_webhook_url: 
+
+beta:
+  admin_web_url: https://admin.kivach-recipes.beta.trinitydigital.ru
+  email_adapter: slack
+  slack_webhook_url: 
+  discord_webhook_url: 
+
+release:
+  admin_web_url: https://admin.kivach-recipes.trinitydigital.ru
+  email_adapter: slack
+  slack_webhook_url: 
+  discord_webhook_url: 

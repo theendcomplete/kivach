@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "6d595efd-9cf6-459d-a8a7-29e33a9324c2",
+		"name": "kivach-recipes-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "graphql",
+			"item": [
+				{
+					"name": "dishes_query",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query($options: ListOptions!) {\r\n\tdishes(options: $options) {\r\n\t\trows {\r\n\t\t\tid\r\n\t\t\tnote\r\n\t\t\tname\r\n\t\t\timageLinks\r\n\t\t\tnumberOfPeople\r\n\t\t\tdifficultyLevel\r\n\t\t\tkcalPer100Grams\r\n\t\t\tproteinPer100Grams\r\n\t\t\tfatPer100Grams\r\n\t\t\tcarbohydratePer100Grams\r\n\t\t\tpopular\r\n\t\t\tpaid\r\n\t\t\trecipe\r\n\t\t\treadyWeight\r\n\t\t\tcreatedAt\r\n\t\t\tupdatedAt\r\n\t\t\tdishesTags {\r\n\t\t\t\trows {\r\n\t\t\t\t\ttag\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tdishesCategoryCodes {\r\n\t\t\t\trows {\r\n\t\t\t\t\tcategoryCode\r\n\t\t\t\t\tid\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tdishesPreferenceCodes {\r\n\t\t\t\trows {\r\n\t\t\t\t\tpreferenceCode\r\n\t\t\t\t}\r\n\t\t\t}\r\n\r\n\t\t\tdishesIngredients {\r\n\t\t\t\trows {\r\n\t\t\t\t    \r\n\t\t\t\t\tquantity\r\n\t\t\t\t\trank\r\n                    ingredient{\r\n                        name\r\n                        measurementUnit\r\n                    }\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\t\r\n\t\t}\r\n\t}\r\n}\r\n",
+								"variables": "{\r\n    \"options\": {\r\n        \"limit\": 1000,\r\n        \"page\": 1,\r\n        \"order\": {\r\n            \"id\": \"asc\"\r\n        },\r\n        \"efilter\": {\r\n            \"and\": [{\r\n                \"gt\": [\"dishes.carbohydrate_per_100_grams\", 10]\r\n            }]\r\n        }\r\n    }\r\n}"
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ingredients_query",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query($options: ListOptions!) {\r\ningredients(options: $options){\r\n\t    \r\n\t    rows{\r\n\t     \r\n\t    \r\n\t        name\r\n\t        dishes{\r\n\t            rows{\r\n\t                name\r\n\t                imageLinks\r\n\t                dishesIngredients {\r\n\t                    rows {\r\n\t                        name\r\n\t                        quantity\r\n\t                    }\r\n\t                }\r\n\t            }\r\n\t        }\r\n\t        \r\n\t       \r\n\t    }\r\n\t}}",
+								"variables": "{\r\n    \"options\": {\r\n        \"limit\": 1000,\r\n        \"page\": 1,\r\n        \"order\": {\r\n            \"id\": \"asc\"\r\n        }\r\n    }\r\n}"
+							},
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SCHEMA",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query IntrospectionQuery {\r\n  __schema {\r\n    queryType {\r\n      name\r\n    }\r\n    mutationType {\r\n      name\r\n    }\r\n    subscriptionType {\r\n      name\r\n    }\r\n    types {\r\n      ...FullType\r\n    }\r\n    directives {\r\n      name\r\n      description\r\n      locations\r\n      args {\r\n        ...InputValue\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\nfragment FullType on __Type {\r\n  kind\r\n  name\r\n  description\r\n  fields(includeDeprecated: true) {\r\n    name\r\n    description\r\n    args {\r\n      ...InputValue\r\n    }\r\n    type {\r\n      ...TypeRef\r\n    }\r\n    isDeprecated\r\n    deprecationReason\r\n  }\r\n  inputFields {\r\n    ...InputValue\r\n  }\r\n  interfaces {\r\n    ...TypeRef\r\n  }\r\n  enumValues(includeDeprecated: true) {\r\n    name\r\n    description\r\n    isDeprecated\r\n    deprecationReason\r\n  }\r\n  possibleTypes {\r\n    ...TypeRef\r\n  }\r\n}\r\n\r\nfragment InputValue on __InputValue {\r\n  name\r\n  description\r\n  type {\r\n    ...TypeRef\r\n  }\r\n  defaultValue\r\n}\r\n\r\nfragment TypeRef on __Type {\r\n  kind\r\n  name\r\n  ofType {\r\n    kind\r\n    name\r\n    ofType {\r\n      kind\r\n      name\r\n      ofType {\r\n        kind\r\n        name\r\n        ofType {\r\n          kind\r\n          name\r\n          ofType {\r\n            kind\r\n            name\r\n            ofType {\r\n              kind\r\n              name\r\n              ofType {\r\n                kind\r\n                name\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "98ce39eb-7aaf-4e23-acb3-87f7916ecb1b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "68041e25-31a0-46f5-a189-4aa84372e69d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

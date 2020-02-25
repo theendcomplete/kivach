@@ -1,0 +1,44 @@
+ru:
+  users:
+    role_codes:
+      admin: 
+        zero: администраторов
+        one: администратор
+        few: администратора
+        many: администраторов
+        plural: администраторы
+      viewer:
+        zero: зрителей
+        one: зритель
+        few: зрителя
+        many: зрителей
+        plural: зрители
+  errors:
+    codes:
+      EFILTER_EMPTY_FIELD:
+      EFILTER_EMPTY_VALUE:
+      EFILTER_INVALID:
+      EFILTER_INVALID_IN_VALUE:
+      EFILTER_INVALID_IS_VALUE:
+      EFILTER_INVALID_OPERATOR:
+      EFILTER_INVALID_VALUE:
+      IMAGE_FORMAT_NOT_SUPPORTED: Формат изображения не поддерживается.
+      IMAGE_NOT_UPLOADED: Ошибка загрузки изображения на сервер.
+      IMAGE_SIZE_TOO_BIG: Слишком большой размер изображения.
+      INVALID_IMAGE: Изображение не принято.
+      PARAMS_EXTENDED_FILTER_INVALID: Некорректные параметры фильтрации.
+      PARAMS_ORDER_INVALID: Неверное значение сортировки.
+      PARAMS_ORDER_INVALID_TYPE: Неверное значение типа сортировки.
+      USER_ACCESS_FORBIDDEN: Доступ запрещён.
+      USER_NOT_AUTHORIZED: Авторизация отклонена.
+      USER_NOT_FOUND: Пользователь не найден.
+      USER_ROLE_CODE_INVALID: Указана неверная роль пользователя.
+      USER_STATUS_CODE_INVALID: Указан неверный статус пользователя.
+      USER_TOKEN_BLANK: Не указан код сессии.
+      USER_TOKEN_NOT_FOUND: Сессия не найдена.
+      USERS_AUTH_PARAMS_LOGIN_MISSING: Не указан логин.
+      USERS_AUTH_PARAMS_PASSWORD_MISSING: Не указан пароль.
+      USERS_AUTH_TOKEN_NOT_CREATED: Невозможно создать ключ доступа.
+      USERS_AUTH_USER_NOT_FOUND: Пользователь не найден.
+      USER_ACTION_NOT_FOUND: Действие не найдено.
+      USER_ACTION_TOKEN_EXPIRED: Срок действия истек.
